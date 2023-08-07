@@ -21,19 +21,26 @@ if [ "$(unamer)" = "Darwin" ]; then
   # In GitHub Actions:
   # env:
   #  PROJECT_TYPE: "UEFI"
-
-  # TODO: Get rid of 13.4.1 after fully migrating to macOS 13 workers.
-  if [ "$(uname -r | cut -f1 -d'.')" = "21" ]; then
-    XCODE_VERSION="13.4.1"
-  else
-    XCODE_VERSION="14.3.1"
-  fi
+  # 添加CI镜像版本检查运行不同的xcode版本
+if [ "$(uname -r | cut -f1 -d'.')" = "20" ]; then
+  XCODE_VERSION="13.2.1"
+elif [ "$(uname -r | cut -f1 -d'.')" = "21" ]; then
+  XCODE_VERSION="14.2"
+elif [ "$(uname -r | cut -f1 -d'.')" = "22" ]; then
+  XCODE_VERSION="14.3.1"
+else
+  echo "Unsupported OS version."
+fi
 
   case "${PROJECT_TYPE}" in 
     UEFI)
       BUILD_DEVELOPER_DIR="${XCODE_DIR/VERSION/${XCODE_VERSION}}"
       ANALYZE_DEVELOPER_DIR="${XCODE_DIR/VERSION/${XCODE_VERSION}}"
       COVERITY_DEVELOPER_DIR="${XCODE_DIR/VERSION/${XCODE_VERSION}}"
+      ;;
+      
+    OC-D)
+      BUILD_DEVELOPER_DIR="${XCODE_DIR/VERSION/${XCODE_VERSION}}"
       ;;
     
     KEXT | TOOL)
@@ -66,7 +73,7 @@ if [ "$(unamer)" = "Darwin" ]; then
   if [ -n "${ACID32}" ]; then
     echo "OVERRIDE_PYTHON3=${DEVELOPER_DIR}/usr/bin/python3" >> "$GITHUB_ENV"
     export OVERRIDE_PYTHON3="${DEVELOPER_DIR}/usr/bin/python3"
-    src=$(curl -Lfs https://raw.githubusercontent.com/acidanthera/ocbuild/master/clang32-bootstrap.sh) && eval "$src" || exit 1
+    src=$(curl -Lfs https://raw.githubusercontent.com/wy414012/ocbuild/Yaming/clang32-bootstrap.sh) && eval "$src" || exit 1
   fi
 fi
 

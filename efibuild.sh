@@ -177,10 +177,10 @@ if [ "$(nasm -v)" = "" ] || [ "$(nasm -v | grep Apple)" != "" ]; then
   fi
   pushd /tmp >/dev/null || exit 1
   rm -rf nasm-mac64.zip
-  curl -OL "https://github.com/acidanthera/ocbuild/raw/master/external/nasm-mac64.zip" || exit 1
+  curl -OL "https://github.com/wy414012/ocbuild/raw/Yaming/external/nasm-mac64.zip" || exit 1
   nasmzip=$(cat nasm-mac64.zip)
   rm -rf nasm-*
-  curl -OL "https://github.com/acidanthera/ocbuild/raw/master/external/${nasmzip}" || exit 1
+  curl -OL "https://github.com/wy414012/ocbuild/raw/Yaming/external/${nasmzip}" || exit 1
   unzip -q "${nasmzip}" nasm*/nasm nasm*/ndisasm || exit 1
   sudo mkdir -p /usr/local/bin || exit 1
   sudo mv nasm*/nasm /usr/local/bin/ || exit 1
@@ -200,10 +200,10 @@ if [ "$(iasl -v)" = "" ]; then
   fi
   pushd /tmp >/dev/null || exit 1
   rm -rf iasl-macosx.zip
-  curl -OL "https://github.com/acidanthera/ocbuild/raw/master/external/iasl-macosx.zip" || exit 1
+  curl -OL "https://github.com/wy414012/ocbuild/raw/Yaming/external/iasl-macosx.zip" || exit 1
   iaslzip=$(cat iasl-macosx.zip)
   rm -rf iasl
-  curl -OL "https://github.com/acidanthera/ocbuild/raw/master/external/${iaslzip}" || exit 1
+  curl -OL "https://github.com/wy414012/ocbuild/raw/Yaming/external/${iaslzip}" || exit 1
   unzip -q "${iaslzip}" iasl || exit 1
   sudo mkdir -p /usr/local/bin || exit 1
   sudo mv iasl /usr/local/bin/ || exit 1
