@@ -28,6 +28,8 @@ elif [ "$(uname -r | cut -f1 -d'.')" = "21" ]; then
   XCODE_VERSION="14.2"
 elif [ "$(uname -r | cut -f1 -d'.')" = "22" ]; then
   XCODE_VERSION="14.3.1"
+elif [ "$(uname -r | cut -f1 -d'.')" = "23" ]; then
+  XCODE_VERSION="14.3.1"
 else
   echo "Unsupported OS version."
 fi
