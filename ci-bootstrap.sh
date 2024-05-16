@@ -29,7 +29,7 @@ elif [ "$(uname -r | cut -f1 -d'.')" = "21" ]; then
 elif [ "$(uname -r | cut -f1 -d'.')" = "22" ]; then
   XCODE_VERSION="14.3.1"
 elif [ "$(uname -r | cut -f1 -d'.')" = "23" ]; then
-  XCODE_VERSION="15.3"
+  XCODE_VERSION="15.4"
 else
   echo "Unsupported OS version."
 fi
@@ -42,7 +42,7 @@ fi
       ;;
       
     OC-D)
-      BUILD_DEVELOPER_DIR="${XCODE_DIR/VERSION/${XCODE_VERSION}}"
+      BUILD_DEVELOPER_DIR="/Applications/Xcode.app/Contents/Developer"
       ;;
     
     KEXT | TOOL)
