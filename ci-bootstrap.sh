@@ -22,17 +22,11 @@ if [ "$(unamer)" = "Darwin" ]; then
   # env:
   #  PROJECT_TYPE: "UEFI"
   # 添加CI镜像版本检查运行不同的xcode版本
-if [ "$(uname -r | cut -f1 -d'.')" = "20" ]; then
-  XCODE_VERSION="13.2.1"
-elif [ "$(uname -r | cut -f1 -d'.')" = "21" ]; then
-  XCODE_VERSION="14.2"
-elif [ "$(uname -r | cut -f1 -d'.')" = "22" ]; then
-  XCODE_VERSION="14.3.1"
-elif [ "$(uname -r | cut -f1 -d'.')" = "23" ]; then
-  XCODE_VERSION="15.4"
-else
-  echo "Unsupported OS version."
-fi
+  if [ "$(uname -r | cut -f1 -d'.')" = "21" ]; then
+    XCODE_VERSION="13.4.1"
+  else
+    XCODE_VERSION="14.3.1"
+  fi
 
   case "${PROJECT_TYPE}" in 
     UEFI)
