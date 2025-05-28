@@ -28,7 +28,7 @@ if [ "$(unamer)" = "Darwin" ]; then
     # Stick to 15.2 because current default download version of Coverity cannot support higher yet:
     # https://sig-synopsys.my.site.com/community/s/article/coverity-capture-failed-for-Xcode-15-4-version-on-Mac-OS
     # https://documentation.blackduck.com/bundle/coverity-docs/page/webhelp-files/relnotes_latest.html#:~:text=Bug%20fixes-,CAP%2D2296,-Reported%20in%20version
-    XCODE_VERSION="15.2.0"
+    XCODE_VERSION="15.4.0"
   fi
 
   case "${PROJECT_TYPE}" in 
